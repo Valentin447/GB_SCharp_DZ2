@@ -1,31 +1,33 @@
-﻿void Task10()
+﻿int getNumber(string message)
+{
+    Console.Write(message + ": ");
+    return Convert.ToInt32(Console.ReadLine());
+}
+
+void Task10()
 {
     // Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-    Console.Write("Введите трехзначное число: ");
-    int number = Convert.ToInt32(Console.ReadLine());
+    int number = getNumber("Введите трехзначное число");
 
-    Console.WriteLine(Math.Abs(number % 100 / 10));
+    Console.WriteLine("Вторая цифра: " + Math.Abs(number % 100 / 10));
 }
 void Task13()
 {
     //Задача 13: Напишите программу, которая с помощью деления выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 
-    Console.Write("Введите число: ");
-    int number = Convert.ToInt32(Console.ReadLine());
+    int number = Math.Abs(getNumber("Введите число"));
 
-    int numberAbs = Math.Abs(number);
-
-    if (numberAbs > 99)
+    if (number > 99)
     {
-        while (numberAbs > 999)
+        while (number > 999)
         {
-            numberAbs = numberAbs / 10;
+            number = number / 10;
         }
 
-        Console.WriteLine(numberAbs % 10);
-    } 
-    else 
+        Console.WriteLine("Третья цифра: " + number % 10);
+    }
+    else
     {
         Console.WriteLine("Третьей цифры нет");
     }
@@ -34,18 +36,18 @@ void Task13()
 void Task15()
 {
     // Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+    
+    int numberDay = getNumber("Введите цифру, обозначающую день недели");
 
-    Console.Write("Введите цифру, обозначающую день недели: ");
-    int number = Convert.ToInt32(Console.ReadLine());
+    string[] days = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье" };
 
-    string[] days = {"Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
-
-    if(number == 6 || number == 7){
+    if (numberDay == 6 || numberDay == 7)
+    {
         Console.WriteLine("Выходной!");
-    } 
-    Console.WriteLine(days[number - 1]);
+    }
+    Console.WriteLine(days[numberDay - 1]);
 }
 
-//Task10();
+Task10();
 //Task13();
-Task15();
+//Task15();
